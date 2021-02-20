@@ -16,7 +16,7 @@ export default class CourseGrid
       <Link to="/courses/table">
         <i className="fas fa-list fa-2x float-right"></i>
       </Link>
-    <h2>Course Grid Page</h2>
+    <h2>Course Grid</h2>
     <div className="row">
     {
       this.props.courses.map((course) =>

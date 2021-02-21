@@ -39,8 +39,8 @@ const CourseRow = (
                     className="form-control"/>
             }
         </td>
-        <td className="w-25 col-md-6">{owner}</td>
-        <td className="w-25 col-md-6">{lastModified}</td>
+        <td scope="col" className="d-none d-sm-table-cell">{owner}</td>
+        <td scope="col" className="d-none d-md-table-cell">{lastModified}</td>
         <td className="w-25 col-md-6">
             <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
             {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}

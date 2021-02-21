@@ -23,8 +23,8 @@ export default class CourseTable
           <tbody>
           <tr>
             <th>Title</th>
-            <th>Owner</th>
-            <th>Last Modified</th>
+            <th scope="col" className="d-none d-sm-table-cell">Owner</th>
+            <th scope="col" className="d-none d-md-table-cell">Last Modified</th>
             <th></th>
           </tr>
           {

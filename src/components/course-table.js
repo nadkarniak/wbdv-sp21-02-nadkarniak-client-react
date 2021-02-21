@@ -12,17 +12,21 @@ export default class CourseTable
 
   render() {
     return(
-      <div>
+      <div className="container-fluid">
           <Link to="/courses/grid">
             <i className="fas fa-2x fa-th float-right"></i>
           </Link>
         <h2>Course Table</h2>
-        <table className="table">
+
+        <table class="table table-striped">
+
           <tbody>
-          {/*<CourseRow title="CS1234" owner="alice" lastModified={"1/12/34"}/>*/}
-          {/*<CourseRow title="CS2345" owner="bob"   lastModified={"2/23/24"}/>*/}
-          {/*<CourseRow title="CS3456" owner="charlie" lastModified={"3/22/14"}/>*/}
-          {/*<CourseRow title="CS4567" owner="dan"   lastModified={"4/12/36"}/>*/}
+          <tr>
+            <th>Title</th>
+            <th>Owner</th>
+            <th>Last Modified</th>
+            <th></th>
+          </tr>
           {
             this.props.courses.map((course, ndx) =>
               <CourseRow

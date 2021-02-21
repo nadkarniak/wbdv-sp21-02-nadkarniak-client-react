@@ -24,7 +24,7 @@ const CourseRow = (
 
   return (
       <tr>
-        <td>
+        <td className="w-25 col-md-6">
             {
                 !editing &&
                 <Link to="/courses/editor">
@@ -39,9 +39,9 @@ const CourseRow = (
                     className="form-control"/>
             }
         </td>
-        <td>{owner}</td>
-        <td>{lastModified}</td>
-        <td>
+        <td className="w-25 col-md-6">{owner}</td>
+        <td className="w-25 col-md-6">{lastModified}</td>
+        <td className="w-25 col-md-6">
             <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
             {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
             {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}

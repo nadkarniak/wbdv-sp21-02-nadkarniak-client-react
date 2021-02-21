@@ -156,6 +156,7 @@ class CourseManager extends React.Component {
           <Route path="/courses/editor"
                  render={(props) => <CourseEditor {...props}/>}>
           </Route>
+          <th><button class="btn-success" onClick={this.addCourse}><i class="fas fa-plus-circle"></i></button></th>
       </div>
     )
   }

@@ -41,16 +41,11 @@ class CourseManager extends React.Component {
     findAllCourses()
         .then(courses => this.setState({courses}))
 
-  addCourse = (e) => {
-    //const newCourse = {
-      //title: $("#titleFld").val(),
-      //owner: "New Owner",
-      //lastModified: "Never"
-    //}
+  addCourse = () => {
     const newCourse = {
-        title: this.state.title,
-        owner: this.state.owner,
-        lastModified: this.state.date
+      title: "New Course",
+      owner: "New Owner",
+      lastModified: "Never"
     }
     courseService.createCourse(newCourse)
         .then(course => this.setState(
@@ -98,24 +93,6 @@ class CourseManager extends React.Component {
         })
   }
 
-  setTitle = (e) => {
-        this.setState({
-            title: e.target.value
-        })
-  }
-
-  setOwner = (e) => {
-        this.setState({
-                    owner: e.target.value
-                })
-  }
-
-  setDate = (e) => {
-          this.setState({
-                      date: e.target.value
-                  })
-    }
-
   render() {
     return(
       <div>
@@ -132,18 +109,14 @@ class CourseManager extends React.Component {
                     placeholder="Last Modified" onChange={e=> this.setDate(e)}/>Last Modified</th>
             <th><button class="btn-success" onClick={this.addCourse}><i class="fas fa-plus-circle"></i></button></th>
         </tr>
-
         <Route path="/courses/table">
           <CourseTable
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
-
         </Route>
-
         <Route path="/courses/grid">
           <CourseGrid
-              updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
         </Route>
@@ -153,10 +126,17 @@ class CourseManager extends React.Component {
           {/*<Route path="/courses/editor"*/}
           {/*       render={(props) => <CourseEditor props={props}/>}>*/}
           {/*</Route>*/}
-          <Route path="/courses/editor"
+          <Route path={[
+              "/courses/editor/:courseId",
+              "/courses/editor/:courseId/:moduleId",
+              "/courses/editor/:courseId/:moduleId/:lessonId"]}
                  render={(props) => <CourseEditor {...props}/>}>
           </Route>
-          <th><button class="btn-success" onClick={this.addCourse}><i class="fas fa-plus-circle"></i></button></th>
+
+          {/*<Route path="/courses/editor/:courseId/:moduleId/:lessonId"*/}
+          {/*       render={(props) => <CourseEditor {...props}/>}>*/}
+          {/*</Route>*/}
+
       </div>
     )
   }

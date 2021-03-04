@@ -6,7 +6,8 @@ const EditableItem = (
         to="/somewhere/to/go",
         deleteItem,
         updateItem,
-        item={title: "Some Title", _id:"ABC"}
+        item={title: "Some Title", _id:"ABC"},
+        active
     }) => {
     const [editing, setEditing] = useState(false)
     const [cachedItem, setCahedItem] = useState(item)
@@ -15,7 +16,7 @@ const EditableItem = (
             {
                 !editing &&
                 <>
-                    <Link className="nav-link" to={to}>
+                    <Link className={`nav-link ${active?'active':''}`} to={to}>
                         {item.title}
                     </Link>
                     <i onClick={() => setEditing(true)} className="fas fa-edit"></i>

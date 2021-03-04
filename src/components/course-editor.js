@@ -25,7 +25,7 @@ const CourseEditor = ({history}) => {
                 <Link to="/courses/table">
                     <i className="fas fa-arrow-left"></i>
                 </Link>
-                Course Editor {courseId} {moduleId}
+                Course Editor
                 <i onClick={() => history.goBack()}
                    className="fas fa-times float-right"></i>
                 {/*<i onClick={() => props.history.goBack()}*/}

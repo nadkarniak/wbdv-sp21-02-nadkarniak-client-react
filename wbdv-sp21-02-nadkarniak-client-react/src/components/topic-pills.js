@@ -7,19 +7,19 @@ import topicService from '../services/topic-service'
 
 const TopicPills = (
     {
-        topics = [{_id: "ABC", title: "A"}],
+        topics = [],
         findTopicsForLesson,
         createTopicForLesson,
         updateTopic,
         deleteTopic
     }) => {
-        const {courseId, moduleId, lessonId, topicId} = useParams()
-        console.log(topicId)
+        const {layout, courseId, moduleId, lessonId, topicId} = useParams()
         useEffect (()=> {
-            if (lessonId !== "undefined" && typeof lessonId !== "undefined"){
+            if (lessonId !== "undefined" && typeof lessonId !== "undefined"
+                && moduleId !== "undefined" && typeof moduleId !== "undefined"){
                 findTopicsForLesson(lessonId)
             }
-        }, [lessonId])
+        }, [moduleId, lessonId])
         return(
             <div>
                 <h3>Topics</h3>
@@ -28,8 +28,9 @@ const TopicPills = (
                     topics.map(topic =>
                         <li className="nav-item">
                             <EditableItem
+                            key = {topic._id}
                             active={topic._id === topicId}
-                            to={`/courses/editor/${courseId}/${moduleId}/${lessonId}/${topic._id}`}
+                            to={`/courses/${layout}/editor/${courseId}/${moduleId}/${lessonId}/${topic._id}`}
                             updateItem={updateTopic}
                             deleteItem={deleteTopic}
                             item={topic}

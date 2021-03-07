@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 const CourseRow = (
     {
@@ -12,7 +12,7 @@ const CourseRow = (
     }) => {
     const [editing, setEditing] = useState(false)
     const [newTitle, setNewTitle] = useState(title)
-
+    const {layout} = useParams()
     const saveTitle = () => {
         setEditing(false)
         const newCourse = {
@@ -27,7 +27,7 @@ const CourseRow = (
         <td>
             {
                 !editing &&
-                <Link to={`/courses/editor/${course._id}`}>
+                <Link to={`/courses/${layout}/editor/${course._id}`}>
                     {title}
                 </Link>
             }

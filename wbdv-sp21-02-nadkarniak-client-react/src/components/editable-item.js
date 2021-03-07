@@ -6,7 +6,7 @@ const EditableItem = (
         to="/somewhere/to/go",
         deleteItem,
         updateItem,
-        item={title: "Some Title", _id:"ABC"},
+        item,
         active
     }) => {
     const [editing, setEditing] = useState(false)

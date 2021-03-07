@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 const CourseCard = (
     {
@@ -13,7 +13,7 @@ const CourseCard = (
     {
     const [editing, setEditing] = useState(false)
     const [newTitle, setNewTitle] = useState(title)
-
+    const {layout} = useParams()
     const saveTitle = () => {
           setEditing(false)
           const newCourse = {
@@ -32,7 +32,7 @@ const CourseCard = (
         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
           <img src={``}/>
-        {!editing && <Link to={`/courses/editor/${course._id}`} className="btn btn-primary">
+        {!editing && <Link to={`/courses/${layout}/editor/${course._id}`} className="btn btn-primary">
             {course.title}
         </Link>}
         {

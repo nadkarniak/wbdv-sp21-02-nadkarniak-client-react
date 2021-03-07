@@ -6,17 +6,13 @@ import lessonService from '../services/lesson-service'
 
 const LessonTabs = (
     {
-        lessons=[
-            {_id: "123", title: "Lesson A"},
-            {_id: "123", title: "Lesson B"},
-            {_id: "123", title: "Lesson C"}
-        ],
+        lessons=[],
         findLessonsForModule,
         createLessonForModule,
         updateLesson,
         deleteLesson
     }) => {
-    const {courseId, moduleId, lessonId} = useParams();
+    const {layout, courseId, moduleId, lessonId} = useParams();
     useEffect(() => {
         if(moduleId !== "undefined" && typeof moduleId !== "undefined") {
             findLessonsForModule(moduleId)
@@ -31,7 +27,7 @@ const LessonTabs = (
                     <li className="nav-item">
                         <EditableItem
                             active={lesson._id === lessonId}
-                            to={`/courses/editor/${courseId}/${moduleId}/${lesson._id}`}
+                            to={`/courses/${layout}/editor/${courseId}/${moduleId}/${lesson._id}`}
                             updateItem={updateLesson}
                             deleteItem={deleteLesson}
                             item={lesson}/>

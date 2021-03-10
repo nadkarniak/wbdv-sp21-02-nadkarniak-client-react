@@ -5,6 +5,7 @@ const CourseRow = (
     {
         deleteCourse,
         updateCourse,
+        findCourseById,
         course,
         lastModified,
         title,

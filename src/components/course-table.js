@@ -30,8 +30,9 @@ export default class CourseTable
           {
             this.props.courses.map((course, ndx) =>
               <CourseRow
-                  updateCourse={this.props.updateCourse}
+                updateCourse={this.props.updateCourse}
                 deleteCourse={this.props.deleteCourse}
+                findCourseById={this.props.findCourseById}
                 key={ndx}
                 course={course}
                 title={course.title}

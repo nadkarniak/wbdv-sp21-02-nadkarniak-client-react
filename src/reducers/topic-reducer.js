@@ -2,7 +2,7 @@ const initialState = {
     topics: []
 }
 
-const lessonReducer = (state=initialState, action) => {
+const topicReducer = (state=initialState, action) => {
     switch(action.type){
          case "CREATE_TOPIC":
             return{
@@ -43,4 +43,4 @@ const lessonReducer = (state=initialState, action) => {
     }
 }
 
-export default lessonReducer
+export default topicReducer

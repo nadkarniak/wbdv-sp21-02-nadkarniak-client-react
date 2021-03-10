@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Link, useParams} from "react-router-dom";
 import moduleReducer from "../reducers/modules-reducer";
 import lessonReducer from "../reducers/lesson-reducer";
@@ -8,6 +8,8 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
+import courseService, {findCourseById, deleteCourse} from "../services/course-service";
+
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -21,7 +23,17 @@ const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
     const {layout, courseId, moduleId} = useParams();
-    console.log(layout)
+    var title = ""
+    console.log(courseId)
+    useEffect(() => {
+            // alert(courseId)
+            const course = findCourseById(courseId)
+            console.log(course._id)
+            title = course.title
+            console.log(title)
+        }, [courseId])
+    //const course = findCourseById(courseId)
+
     return (
     <Provider store={store}>
         <div>
@@ -29,7 +41,7 @@ const CourseEditor = ({history}) => {
                 <Link to="/courses/table">
                     <i className="fas fa-arrow-left"></i>
                 </Link>
-                Course Editor
+                Course Editor {title}
                 <i onClick={() => history.goBack()}
                    className="fas fa-times float-right"></i>
                 {/*<i onClick={() => props.history.goBack()}*/}

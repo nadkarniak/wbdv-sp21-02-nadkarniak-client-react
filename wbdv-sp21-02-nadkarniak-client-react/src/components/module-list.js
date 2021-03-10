@@ -25,6 +25,7 @@ const ModuleList = (
                 myModules.map(module =>
                     <li className={`list-group-item ${module._id === moduleId ? 'active' : ''}`}>
                         <EditableItem
+                            key={module._id}
                             to={`/courses/${layout}/editor/${courseId}/${module._id}`}
                             updateItem={updateModule}
                             deleteItem={deleteModule}

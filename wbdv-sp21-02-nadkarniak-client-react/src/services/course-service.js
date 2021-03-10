@@ -30,9 +30,14 @@ export const updateCourse = (courseId, course) =>
     })
         .then(response => response.json())
 
+export const findCourseById = (courseId) =>
+    fetch(`${COURSES_URL}/${courseId}`)
+    .then(response => response.json())
+
 export default {
     findAllCourses,
     deleteCourse: deleteCourse,
     createCourse,
-    updateCourse: updateCourse
+    updateCourse: updateCourse,
+    findCourseById
 }

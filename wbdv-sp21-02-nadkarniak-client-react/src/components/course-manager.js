@@ -93,6 +93,11 @@ class CourseManager extends React.Component {
         })
   }
 
+  findCourseById = (course) => {
+    courseService.findCourseById(course._id)
+    .then(courses => this.setState({courses}))
+  }
+
   render() {
     return(
       <div>
@@ -113,6 +118,7 @@ class CourseManager extends React.Component {
           <CourseTable
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
+              findCourseById={this.findCourseById}
               courses={this.state.courses}/>
         </Route>
         <Route path="/courses/grid">

@@ -26,6 +26,7 @@ const LessonTabs = (
                 lessons.map(lesson =>
                     <li className="nav-item">
                         <EditableItem
+                            key={lesson._id}
                             active={lesson._id === lessonId}
                             to={`/courses/${layout}/editor/${courseId}/${moduleId}/${lesson._id}`}
                             updateItem={updateLesson}

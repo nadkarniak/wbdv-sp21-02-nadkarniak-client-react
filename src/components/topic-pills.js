@@ -18,6 +18,8 @@ const TopicPills = (
             if (lessonId !== "undefined" && typeof lessonId !== "undefined"
                 && moduleId !== "undefined" && typeof moduleId !== "undefined"){
                 findTopicsForLesson(lessonId)
+            } else{
+                topics = []
             }
         }, [moduleId, lessonId])
         return(

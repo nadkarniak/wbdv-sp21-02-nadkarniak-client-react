@@ -6,10 +6,19 @@ const ParagraphWidget = ({widget, setWidget, editing, updateWidget, deleteWidget
         <div>
             {
                 editing &&
+                <div>
                 <textarea
                     onChange={(e) => setCahedItem({...cachedItem, text: e.target.value})}
                     value={cachedItem.text}
-                    className="form-control"></textarea>
+                    className="form-control">
+                    </textarea>
+
+                        <i onClick={() => {
+                            updateWidget(cachedItem)
+                        }} className="fas fa-2x fa-check float-right"></i>
+                        <i onClick={() => deleteWidget(widget)} className="fas fa-2x fa-trash float-right"></i>
+                    </div>
+
             }
             {
                 !editing &&
@@ -17,12 +26,7 @@ const ParagraphWidget = ({widget, setWidget, editing, updateWidget, deleteWidget
                         {widget.text}
                     </p>
             }
-            <>
-                <i onClick={() => {
-                    updateWidget(cachedItem)
-                }} className="fas fa-2x fa-check float-right"></i>
-                <i onClick={() => deleteWidget(widget)} className="fas fa-2x fa-trash float-right"></i>
-            </>
+
         </div>
     )
 }

@@ -19,16 +19,25 @@ const WidgetList =
         }
 
     }, [topicId])
-    const createWidgetForTopic = () => {
+    const createHeadingForTopic = () => {
             // TODO: move server communication to widget-service.js
-            widgetService.createWidgetForTopic(topicId, {type: "HEADING", size: 1, text: "New Widget"})
+            widgetService.createWidgetForTopic(topicId, {type: "HEADING", size: 1, text: "New Heading"})
                 .then(actualWidget => {
                     setWidgets(widgets => ([...widgets, actualWidget]))
                 })
         }
+
+    const createParagraphForTopic = () => {
+                // TODO: move server communication to widget-service.js
+                widgetService.createWidgetForTopic(topicId, {type: "PARAGRAPH", size: 1, text: "New Paragraph"})
+                    .then(actualWidget => {
+                        setWidgets(widgets => ([...widgets, actualWidget]))
+                    })
+            }
     const deleteWidget = (widget) => {
         widgetService.deleteWidget(widget.id).then(response => {
-            setWidgets((widgets) => widgets.filter(w => w.id !== widget.wid))
+            setWidgets((widgets) => widgets.filter(w => w.id !== widget.id))
+            setEditingWidget({})
         })}
     const updateWidget = (widget) =>{
         widgetService.updateWidget(widget.id, widget).then(response => {
@@ -38,7 +47,8 @@ const WidgetList =
         
     return(
         <div>
-            <i onClick={createWidgetForTopic} className="fas fa-plus fa-2x float-right"></i>
+            <i onClick={createHeadingForTopic} className="fas fa-plus fa-2x float-right"></i>
+            <i onClick={createParagraphForTopic} className="fas fa-paragraph fa-2x float-right"></i>
             <h2>Widget List ({widgets.length}) {editingWidget.id}</h2>
             <ul className="list-group">
                 {
@@ -62,7 +72,9 @@ const WidgetList =
                             <ParagraphWidget
                                 editing={editingWidget.id === widget.id}
                                 widget={widget}
-                                setWidget={setEditingWidget}/>
+                                setWidget={setEditingWidget}
+                                updateWidget={updateWidget}
+                                deleteWidget={deleteWidget}/>
                         }
                     </li>
                     )

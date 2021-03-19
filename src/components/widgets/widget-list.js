@@ -47,8 +47,8 @@ const WidgetList =
         
     return(
         <div>
-            <i onClick={createHeadingForTopic} className="fas fa-plus fa-2x float-right"></i>
-            <i onClick={createParagraphForTopic} className="fas fa-paragraph fa-2x float-right"></i>
+            <i onClick={createHeadingForTopic} title="Add Heading" className="fas fa-plus fa-2x float-right"></i>
+            <i onClick={createParagraphForTopic} title="Add Paragraph" className="fas fa-paragraph fa-2x float-right"></i>
             <h2>Widget List ({widgets.length}) {editingWidget.id}</h2>
             <ul className="list-group">
                 {
@@ -56,7 +56,7 @@ const WidgetList =
                     <li className="list-group-item" key={widget.id}>
                         {
                             editingWidget.id !== widget.id &&
-                            <i onClick={() => setEditingWidget(widget)} className="fas fa-2x fa-cog float-right"></i>
+                            <i onClick={() => setEditingWidget(widget)} title="Edit" className="fas fa-2x fa-cog float-right"></i>
                         }
                         {
                             widget.type === "HEADING" &&

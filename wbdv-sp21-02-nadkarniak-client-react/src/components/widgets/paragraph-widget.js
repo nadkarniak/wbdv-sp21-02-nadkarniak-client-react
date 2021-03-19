@@ -12,11 +12,12 @@ const ParagraphWidget = ({widget, setWidget, editing, updateWidget, deleteWidget
                     value={cachedItem.text}
                     className="form-control">
                     </textarea>
-
-                        <i onClick={() => {
-                            updateWidget(cachedItem)
-                        }} className="fas fa-2x fa-check float-right"></i>
-                        <i onClick={() => deleteWidget(widget)} className="fas fa-2x fa-trash float-right"></i>
+                    <select onChange={(e) => setCahedItem({...cachedItem, type:e.target.value})} value={cachedItem.type} className="form-control">
+                        <option value={"HEADING"}>Heading</option>
+                        <option value={"PARAGRAPH"}>Paragraph</option>
+                    </select>
+                    <i onClick={() => {updateWidget(cachedItem)}} title="Save" className="fas fa-2x fa-check float-right"></i>
+                    <i onClick={() => deleteWidget(widget)} title="Delete" className="fas fa-2x fa-trash float-right"></i>
                     </div>
 
             }

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+
 //Last update: adding update and delete functions as params and adding cachedItem, moved save/delete buttons from widget list
 // to here
 const HeadingWidget = ({widget, setWidget, editing, updateWidget, deleteWidget}) =>{
@@ -26,11 +27,15 @@ const HeadingWidget = ({widget, setWidget, editing, updateWidget, deleteWidget})
                     <option value={5}>Heading 5</option>
                     <option value={6}>Heading 6</option>
                 </select>
+                <select onChange={(e) => setCahedItem({...cachedItem, type:e.target.value})} value={cachedItem.type} className="form-control">
+                    <option value={"HEADING"}>Heading</option>
+                    <option value={"PARAGRAPH"}>Paragraph</option>
+                </select>
                 <>
                     <i onClick={() => {
                         updateWidget(cachedItem)
-                    }} className="fas fa-2x fa-check float-right"></i>
-                    <i onClick={() => deleteWidget(widget)} className="fas fa-2x fa-trash float-right"></i>
+                    }} title="Save" className="fas fa-2x fa-check float-right"></i>
+                    <i onClick={() => deleteWidget(widget)} title="Delete" className="fas fa-2x fa-trash float-right"></i>
                 </>
             </div>
         }

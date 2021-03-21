@@ -1,10 +1,12 @@
+const WIDGET_URL = process.env.REACT_APP_WIDGET_URL
+
 export const findWidgetsForTopic = (topicId) =>
-    fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
+    fetch(`${process.env.REACT_APP_WIDGET_URL}/topics/${topicId}/widgets`)
     .then(response => response.json())
 
 
 export const createWidgetForTopic = (topicId, widget) =>
-    fetch(`http://localhost:8080/api/topics/${topicId}/widgets`,{
+    fetch(`${process.env.REACT_APP_WIDGET_URL}/topics/${topicId}/widgets`,{
         method: "POST",
         body: JSON.stringify(widget),
         headers: {
@@ -13,7 +15,7 @@ export const createWidgetForTopic = (topicId, widget) =>
     }).then(response => response.json())
 
 export const updateWidget = (widgetId, widget) =>
-    fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+    fetch(`${process.env.REACT_APP_WIDGET_URL}/widgets/${widgetId}`, {
                 method: "PUT",
                 body: JSON.stringify(widget),
                 headers: {
@@ -23,7 +25,7 @@ export const updateWidget = (widgetId, widget) =>
 
 
 export const deleteWidget = (widgetId) =>
-    fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+    fetch(`${process.env.REACT_APP_WIDGET_URL}/widgets/${widgetId}`, {
                 method: "DELETE",
          }).then(response => response.json())
 

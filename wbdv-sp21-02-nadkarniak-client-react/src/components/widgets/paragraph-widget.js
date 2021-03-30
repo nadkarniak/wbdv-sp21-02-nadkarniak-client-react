@@ -15,6 +15,8 @@ const ParagraphWidget = ({widget, setWidget, editing, updateWidget, deleteWidget
                     <select onChange={(e) => setCahedItem({...cachedItem, type:e.target.value})} value={cachedItem.type} className="form-control">
                         <option value={"HEADING"}>Heading</option>
                         <option value={"PARAGRAPH"}>Paragraph</option>
+                        <option value={"LIST"}>List</option>
+                        <option value={"IMAGE"}>Image</option>
                     </select>
                     <i onClick={() => {updateWidget(cachedItem)}} title="Save" className="fas fa-2x fa-check float-right"></i>
                     <i onClick={() => deleteWidget(widget)} title="Delete" className="fas fa-2x fa-trash float-right"></i>

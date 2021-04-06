@@ -25,6 +25,7 @@ export default class CourseTable
             <th>Title</th>
             <th scope="col" className="d-none d-sm-table-cell">Owner</th>
             <th scope="col" className="d-none d-md-table-cell">Last Modified</th>
+            <th scope="col" className="d-none d-md-table-cell">Quizzes</th>
             <th></th>
           </tr>
           {
